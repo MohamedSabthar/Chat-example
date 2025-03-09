@@ -10,7 +10,7 @@ final agent:SystemPrompt systemPrompt = {
     instructions: "Assist the users with their requests, whether it's for information, " +
             "tasks, or troubleshooting. Provide clear, helpful responses in a friendly and professional manner."
 };
-final agent:Model model = check new agent:AzureOpenAiModel({auth: {apiKey}}, serviceUrl, deploymentId, apiVersion);
+final agent:Model model = check new agent:AzureOpenAiModel(serviceUrl, apiKey, deploymentId, apiVersion);
 final agent:Agent agent = check new (systemPrompt = systemPrompt, model = model,
     tools = [getUsers, getUser, getUsersPosts, getsPosts, createUser, createPost, deleteUser]
 );
